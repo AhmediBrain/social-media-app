@@ -7,7 +7,7 @@ const Homepage = ({navigation}) => {
 
     return (
         <View>
-            <Text>HomePageeee</Text>
+            <Text>HomePage</Text>
         </View>
 
 
