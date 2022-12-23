@@ -6,6 +6,8 @@ import { createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from '@rneui/themed'
 import Login from './screens/Login.tsx'
+import * as React from 'react'
+import axios from 'axios';
 
 import Feed from './screens/Feed';
 import Account from './screens/Account';
@@ -14,6 +16,9 @@ const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+
+
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>

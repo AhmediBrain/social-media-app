@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import 'dotenv/config'
 
 const connect = async () => await mongoose.connect(
-   `mongodb+srv://useradmin:Bania%40107@cluster0.llsb5n3.mongodb.net/?retryWrites=true&w=majority`,
+   `mongodb+srv://bennettkautz:${process.env.MONGODB_PASSWORD}@bennetts-project-databases.uxvgfb6.mongodb.net/social-media-app?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true

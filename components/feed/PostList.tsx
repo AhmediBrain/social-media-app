@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux'
 import { makeStyles } from '@rneui/themed'
 import {useTheme,useFocusEffect} from '@react-navigation/native'
 import { isTemplateExpression } from 'typescript';
+import axios from 'axios'
 interface IListProps {
   route?: any,
   navigation: any,
@@ -18,15 +19,23 @@ const PostList: React.FunctionComponent<IListProps> = ({ route, navigation }) =>
   const styles = useStyles(colors)
 //   const user = useSelector((state: RootState) => state.user)
   const [postsArray, setpostsArray] = useState<Array<any>>();
+  
+
   useEffect(() => {
     getPopularPosts().then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setpostsArray(res.data)
-      console.log("Fetching posts data")
+      // console.log("Fetching posts data")
     }, err => {
+      // console.log('error here')
       console.log(err)
     })
-  }, []);
+  }, [])
+
+  // useEffect(() => {
+  //   console.log(postsArray, 'postlist')
+  // }, [postsArray])
+
   return postsArray ?  (
   <View>
     <FlatList
