@@ -23,7 +23,7 @@ const PostList: React.FunctionComponent<IListProps> = ({ route, navigation }) =>
 
   useEffect(() => {
     getPopularPosts().then(res => {
-      // console.log(res.data)
+      console.log(res)
       setpostsArray(res.data)
       // console.log("Fetching posts data")
     }, err => {

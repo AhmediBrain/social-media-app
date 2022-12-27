@@ -6,7 +6,7 @@ interface IAccountPropTypes {
   navigate?:any
 }
 
-const Account:React.FunctionComponent<IAccountPropTypes> = () =>{
+const Account:React.FunctionComponent<IAccountPropTypes> = () => {
   return (
     <View>
       <Text>Account</Text>

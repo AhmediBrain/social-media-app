@@ -8,17 +8,11 @@ import { Icon } from '@rneui/themed'
 import Login from './screens/Login.tsx'
 import * as React from 'react'
 import axios from 'axios';
-
 import Feed from './screens/Feed';
 import Account from './screens/Account';
-
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
-
 export default function App() {
-
-
-
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -26,35 +20,31 @@ export default function App() {
           {/* <Stack.Screen name={'Login'} component={Login} /> */}
           <Stack.Screen name={'Homepage'} >
             {
-              ({navigation}) => 
-              <Tab.Navigator>
-                <Tab.Screen 
-                  name="News Feed"
+              ({navigation}) =>
+              <Tab.Navigator
+              screenOptions = {{headerTitle:'Home', headerShown: false}}
+              >
+                <Tab.Screen
+                  name="Feed"
                   component={Feed}
                   options={() => ({
                     tabBarIcon: () => <Icon name='home' type='material-icons' />
                   })}
-
                 />
                 <Tab.Screen
                   name="Account"
                   component={Account}
                 />
-
               </Tab.Navigator>
-
             }
-            
           </Stack.Screen>
         </Stack.Navigator>
-
       </NavigationContainer>
       {/* <Text>My Apppppppp</Text>
       <StatusBar style="auto" /> */}
     </SafeAreaProvider>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

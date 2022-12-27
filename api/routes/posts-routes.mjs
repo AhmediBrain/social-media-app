@@ -39,20 +39,28 @@ postRouter.get('/', async (req, res) => {
     .exec((err, item) => {
       console.log(item, 'item')
       if(!err)  return res.send(item)
-      
+      return res.status(404).send('An error has occurred while fetching posts.') 
     })
 
   } catch (err) {
-    res.status(404).send('An error has occurred while fetching posts.')
+    return res.status(404).send('An error has occurred while fetching posts.')
   }
 })
 // Find one
 postRouter.get('/:_id', async (req, res, next) => {
   if (!mongoose.isValidObjectId(req.params._id)) return res.status(400).send('Invalid ID')
-  let post
-  try { await Post.findOne({ _id: req.params._id }).then(ele => post = ele) } catch (err) { return res.status(404).send('Cannot find post')}
-  return res.send(post)
+  try {
+    await Post.findOne({ _id: req.params._id }).populate('author').exec((err,item)=>{
+      // return res.send(item)
+      console.log(item, err)
+   if(!err) return res.send(item)
+   })
+  }
+  catch (err)
+   { return res.status(404).send('Cannot find post')}
 })
+
+
 // Find all by user ID
 postRouter.get('/findAllByUser/:_id', async (req, res, next) => {
   let posts
