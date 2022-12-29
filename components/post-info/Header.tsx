@@ -33,7 +33,7 @@ const Header: React.FunctionComponent<IHeaderProps> = ({ postData, colors, navig
        <Avatar
         icon={{name:'account-circle', type:'material-icons'}}
          size={32}
-         source={{uri: postData.author.profile_picture_url}}
+         source={{uri: postData.author.profile_image}}
          rounded
          containerStyle={{ backgroundColor: "#3D4DB7"}}
        />

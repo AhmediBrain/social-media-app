@@ -50,7 +50,7 @@ postRouter.get('/', async (req, res) => {
 postRouter.get('/:_id', async (req, res, next) => {
   if (!mongoose.isValidObjectId(req.params._id)) return res.status(400).send('Invalid ID')
   try {
-    await Post.findOne({ _id: req.params._id }).populate('author').exec((err,item)=>{
+    await Post.findOne({ _id: req.params._id }).populate([{path: 'comments.author', model: User}, 'author']).exec((err,item)=>{
       // return res.send(item)
       console.log(item, err)
    if(!err) return res.send(item)

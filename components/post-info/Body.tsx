@@ -26,7 +26,7 @@ const Body: React.FunctionComponent<IBodyProps> = ({ navigation, postData, color
         rounded
             size={20}
             containerStyle={{ backgroundColor: "#3D4DB7"}}
-        source={{ uri: postInfo.user.profile_picture_url}}
+        source={{ uri: postInfo.author.profile_picture_url}}
         />
         <Text onPress={()=>navigation.push('Account', {user_id: postData.author._id})} style={styles.username}>{postInfo.author.username}: </Text>
         <Text style={styles.description}>{postInfo.content}</Text>

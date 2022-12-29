@@ -13,13 +13,13 @@ import { getPostById } from '../api-helpers/post-requests';
 interface IPostProps {
   // postData: any,
   route: any,
-  navigation: any,
+  navigation: any
 }
 const Post: React.FunctionComponent<IPostProps> = ({ route, navigation }) => {
   const { postId } = route.params
-  const { colors } = useTheme()
+  //const { colors } = useTheme()
   const [postData, setPostData] = useState<any>()
-  const [addedComment, setAddedComment ] = useState<number>(0)
+  const [addedComment, setAddedComment] = useState<any>()
   const [isRefreshing, setIsRefreshing] = useState(false);
   // const styles = useStyles(colors)
   // const fetchPostData = async () => {
@@ -29,24 +29,24 @@ const Post: React.FunctionComponent<IPostProps> = ({ route, navigation }) => {
   //   }, err=> console.log(err))
   // }
   useEffect(() => {
-    //console.log(postId, 'postID')
-    //console.log(route.params, 'write somethingr')
+    console.log(postId, 'postID')
     getPostById(postId)
-    .then((res: any) =>{
-    //console.log(res.data, 'ressss')
-    setPostData(res.data)
-    console.log(res, 'anything')
-    }
-    )
+    .then((res: any) => {
+      setPostData(res.data);
+      console.log(res.data)
+    })
     .catch((err) => console.log(err))
-  }, [postId])
 
-  useEffect(() => {
-    console.log(postData, 'post data')
-  }, [postData])
+    setIsRefreshing(false)
+  }, [addedComment, postId])
+
+  // useEffect(() => {
+  //   console.log(route.params, 'route params')
+  //   console.log(postData, 'post data')
+  // }, [postData])
 
 const addedCommentIndicator = () => {
-  setAddedComment(prev => prev + 1)
+  setAddedComment((prev: any) => prev + 1)
 }
 const UpperBodyComponents = postData && <>
 <Header
@@ -92,14 +92,14 @@ export default Post;
 
 const styles = StyleSheet.create ({
   container: {
-    paddingVertical: '5',
+    paddingVertical: 5,
   },
   divider: {
-    width: '98%',
-    marginVertical: '5',
+    width: '90%',
+    marginVertical: 5,
     alignSelf: 'center'
   },
   title: {
-    marginVertical: '5'
+    marginVertical: 5,
   }
 })

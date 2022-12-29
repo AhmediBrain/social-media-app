@@ -12,7 +12,7 @@ const Card: React.FunctionComponent<ICardProps> = ({colors, commentData, navigat
     <View style={styles.container}>
       <Text
       onPress={() => {
-        navigation.push('Account', { user_id: commentData.user.id })
+        navigation.push('Account', { user_id: commentData.author._id })
       }}
       >
           <Text style={styles.username}>{commentData.user.username}: </Text>

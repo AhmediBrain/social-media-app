@@ -9,12 +9,12 @@ const commentRouter = express.Router()
 // req: post_id, user_id, author, text
 // author { user_id, username, profile_image}
 // Save comment data to post and user as an embedded document
-commentRouter.post('/post', async (req, res, next) => {
+commentRouter.post('/create', async (req, res, next) => {
   let post, user, comment
   await Post.findOne({ _id: req.body.post_id }).then(ele=>post=ele)
   await User.findOne({ _id: req.body.user_id }).then(ele=>user=ele)
   if (!post || !user) return res.status(404).send('Post not found.')
-  comment = _.assign(_.pick(req.body, ['author', 'text', 'post_id',]), {_id: new mongoose.Types.ObjectId()})
+  comment = _.assign(_.pick(req.body, [ 'text', 'post_id',]), {_id: new mongoose.Types.ObjectId(), author: req.body.user_id})
   console.log(comment)
   user.created_comments.push(comment)
   post.comments.push(comment)
